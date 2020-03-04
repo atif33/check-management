@@ -1,0 +1,44 @@
+<form [formGroup]="form">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputState">Banque</label>
+      <select id="inputState" class="form-control">
+        <option selected *ngFor="let check of checks">{{check}}</option>
+      </select>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputMontant">Montant</label>
+      <input type="text" class="form-control" id="inputMontant" placeholder="Montant" formControlName="montant">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputMontantLettre">Montant en lettre</label>
+    <input type="text" class="form-control" id="inputMontantLettre" placeholder="Deux mille dirhame">
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputPrenom">Prénom</label>
+      <input type="text" class="form-control" id="inputPrenom" placeholder="Prénom">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputNom">Nom</label>
+      <input type="text" class="form-control" id="inputNom" placeholder="Nom">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputCity">A</label>
+      <input type="text" class="form-control" id="inputCity">
+    </div>
+
+    <div class="form-group col-md-4">
+      <label>Le</label>
+      <input class="form-control" placeholder="yyyy-mm-dd"
+             name="dp"  ngbDatepicker #d="ngbDatepicker">
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button"></button>
+      </div>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary" (click)="toto()">Sign in</button>
+</form>
