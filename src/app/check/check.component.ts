@@ -15,14 +15,19 @@ export class CheckComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      montant: ['', Validators.required]
+      montant: ['', Validators.required],
+      effectiveEndDate: ['', Validators.required]
     });
   }
 
-  toto() {
+  convertNumberToletter(): string {
     // @ts-ignore
     const writtenNumber = require('written-number');
-    writtenNumber(this.form.controls.montant.value, {lang: 'fr'});
-    console.log(writtenNumber(this.form.controls.montant.value, {lang: 'fr'}));
-}
+    return writtenNumber(this.form.controls.montant.value, {lang: 'fr'}) + ' Dirham';
+  }
+
+  onSubmit() {
+    const dateForm = this.form.controls.effectiveEndDate.value;
+    console.log(dateForm.year + '-' + dateForm.month + '-' + dateForm.day );
+  }
 }
