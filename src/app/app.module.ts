@@ -14,6 +14,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { CheckComponent } from './check/check.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import { PdfPrintComponent } from './pdf-print/pdf-print.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import {ReactiveFormsModule} from "@angular/forms";
     HomeComponent,
     HeaderComponent,
     FooterComponent,
-    CheckComponent
+    CheckComponent,
+    PdfPrintComponent
   ],
   imports: [
     BrowserModule,

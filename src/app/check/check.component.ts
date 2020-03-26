@@ -1,5 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {CheckManagement} from "../_model/CheckManagement";
+import {SharedService} from "../_service/shared.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-check',
@@ -9,13 +12,21 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 export class CheckComponent implements OnInit {
   checks = ['Banque Populaire', 'Credit Agricole', 'LCL'];
   form: FormGroup;
+  checkManagement: CheckManagement;
+  toto;
+  message;
 
-  constructor(private  formBuilder: FormBuilder) {
+  constructor(private  formBuilder: FormBuilder,
+              private sharedService: SharedService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      montant: ['', Validators.required],
+      amount: ['', Validators.required],
+      amountInLetter: ['', Validators.required],
+      name: ['', Validators.required],
+      city: ['', Validators.required],
       effectiveEndDate: ['', Validators.required]
     });
   }
@@ -23,11 +34,23 @@ export class CheckComponent implements OnInit {
   convertNumberToletter(): string {
     // @ts-ignore
     const writtenNumber = require('written-number');
-    return writtenNumber(this.form.controls.montant.value, {lang: 'fr'}) + ' Dirham';
+    return writtenNumber(this.form.controls.amount.value, {lang: 'fr'}) + ' Dirham';
   }
 
-  onSubmit() {
-    const dateForm = this.form.controls.effectiveEndDate.value;
-    console.log(dateForm.year + '-' + dateForm.month + '-' + dateForm.day );
+  transformDate(date): string {
+    return this.form.controls.effectiveEndDate.value.year + '-' + this.form.controls.effectiveEndDate.value.month
+      + '-' + this.form.controls.effectiveEndDate.value.day;
+  }
+
+  onSubmit(): void {
+    const date: string = this.transformDate(this.form.controls.effectiveEndDate.value);
+    this.checkManagement = new CheckManagement(this.form.controls.amount.value, this.convertNumberToletter(),
+      this.form.controls.name.value, this.form.controls.city.value, date);
+    console.log('check' + this.checkManagement);
+
+    // this.checkManagement = new CheckManagement('26000', 'titi');
+    // localStorage.setItem('checkInfoPrint', JSON.stringify(this.checkManagement));
+    // window.location.href = '(print:print/invoice)';
+   
   }
 }
