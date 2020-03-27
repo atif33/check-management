@@ -10,7 +10,8 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 export class LoginComponent implements OnInit {
   form: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -21,5 +22,6 @@ export class LoginComponent implements OnInit {
   }
 
   connect() {
+    this.router.navigate(['/home']);
   }
 }
