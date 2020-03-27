@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {SharedService} from "../_service/shared.service";
+import {CheckManagement} from '../_model/CheckManagement';
 
 @Component({
   selector: 'app-pdf-print',
@@ -7,16 +7,14 @@ import {SharedService} from "../_service/shared.service";
   styleUrls: ['./pdf-print.component.css']
 })
 export class PdfPrintComponent implements OnInit {
-  message;
+  message: CheckManagement;
 
-  constructor(private sharedService: SharedService) {
+  constructor() {
   }
 
   ngOnInit(): void {
-    const messageObject = JSON.parse(localStorage.getItem('checkInfoPrint'));
-    this.message = messageObject.montant;
+    this.message = JSON.parse(localStorage.getItem('checkInfoPrint'));
     window.print();
-
   }
 
 

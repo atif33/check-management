@@ -12,6 +12,4 @@ export class CheckManagement {
     this.city = city;
     this.effectiveEndDate = effectiveEndDate;
   }
-
-
 }

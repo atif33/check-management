@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {CheckManagement} from "../_model/CheckManagement";
 import {SharedService} from "../_service/shared.service";
 import {Router} from "@angular/router";
+import {NgxSpinnerService} from "ngx-spinner";
 
 @Component({
   selector: 'app-check',
@@ -17,7 +18,7 @@ export class CheckComponent implements OnInit {
   message;
 
   constructor(private  formBuilder: FormBuilder,
-              private sharedService: SharedService,
+              private spinner: NgxSpinnerService,
               private router: Router) {
   }
 
@@ -29,6 +30,7 @@ export class CheckComponent implements OnInit {
       city: ['', Validators.required],
       effectiveEndDate: ['', Validators.required]
     });
+
   }
 
   convertNumberToletter(): string {
@@ -48,9 +50,11 @@ export class CheckComponent implements OnInit {
       this.form.controls.name.value, this.form.controls.city.value, date);
     console.log('check' + this.checkManagement);
 
-    // this.checkManagement = new CheckManagement('26000', 'titi');
-    // localStorage.setItem('checkInfoPrint', JSON.stringify(this.checkManagement));
-    // window.location.href = '(print:print/invoice)';
-   
+    localStorage.setItem('checkInfoPrint', JSON.stringify(this.checkManagement));
+    this.spinner.show();
+    setTimeout(() => {
+      /** spinner ends after 5 seconds */
+      window.location.href = '(print:print/invoice)';
+    }, 2000);
   }
 }
