@@ -15,7 +15,9 @@ export class PdfPrintComponent implements OnInit {
   ngOnInit(): void {
     this.message = JSON.parse(localStorage.getItem('checkInfoPrint'));
     window.print();
+    // TODO Refacto to Ts
+    window.onafterprint = function (e) {
+      window.location.href = 'home';
+    };
   }
-
-
 }
