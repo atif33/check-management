@@ -1,5 +1,5 @@
 
 <router-outlet></router-outlet>
 <app-footer></app-footer>
-<app-header></app-header>
+<app-header *ngIf="!router.url.includes('login')"></app-header>
 <router-outlet name="print"></router-outlet>

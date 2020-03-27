@@ -11,7 +11,7 @@ import {HomeComponent} from './home/home.component';
 import {HeaderComponent} from './header/header.component';
 import {FooterComponent} from './footer/footer.component';
 import {CheckComponent} from './check/check.component';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {PdfPrintComponent} from './pdf-print/pdf-print.component';
 import {NgxSpinnerModule} from 'ngx-spinner';
 
@@ -32,7 +32,8 @@ import {NgxSpinnerModule} from 'ngx-spinner';
     MatMenuModule,
     NgbModule,
     ReactiveFormsModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    FormsModule
 
 
   ],
