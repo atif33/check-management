@@ -1,9 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {CheckManagement} from "../_model/CheckManagement";
-import {SharedService} from "../_service/shared.service";
-import {Router} from "@angular/router";
-import {NgxSpinnerService} from "ngx-spinner";
+import {CheckManagement} from '../_model/CheckManagement';
+import {Router} from '@angular/router';
+import {NgxSpinnerService} from 'ngx-spinner';
 
 @Component({
   selector: 'app-check',
