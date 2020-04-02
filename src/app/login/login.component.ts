@@ -12,6 +12,7 @@ import {JwtResponse} from "../_model/JwtResponse";
 })
 export class LoginComponent implements OnInit {
   form: FormGroup;
+  submit = false;
 
   constructor(private formBuilder: FormBuilder,
               private router: Router,
@@ -26,7 +27,9 @@ export class LoginComponent implements OnInit {
   }
 
   connect() {
+    this.submit = true;
     if (this.form.valid) {
+
       this.authenticateService.login(this.form.controls.userName.value, this.form.controls.password.value).subscribe();
     }
   }

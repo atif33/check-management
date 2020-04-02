@@ -8,20 +8,20 @@
           <div class="form-group">
             <input type="text" class="form-control input-underline input-lg" placeholder="Nom d'utilisateur"
                    formControlName="userName">
-            <div *ngIf="fieldForm.userName.errors && fieldForm.userName.touched"
+            <div *ngIf="submit ||  (fieldForm.userName.errors && fieldForm.userName.touched)"
                  class="text-danger">nom d'utilisateur invalid
             </div>
           </div>
           <div class="form-group">
             <input type="password" class="form-control input-underline input-lg" placeholder="Mot de passe"
                    formControlName="password">
-            <div class="text-danger" *ngIf="fieldForm.password.errors && fieldForm.password.touched">Mot de passe doit
+            <div class="text-danger" *ngIf="submit || (fieldForm.password.errors && fieldForm.password.touched)">Mot de passe doit
               avoir
               6 carractere min
             </div>
           </div>
         </div>
-        <button class="btn rounded-btn"  (click)="connect()"> Log in</button>
+        <button class="btn rounded-btn"  (click)="connect()">Log in</button>
       </form>
     </div>
   </div>
