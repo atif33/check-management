@@ -4,7 +4,8 @@ import {environment} from "../../environments/environment";
 import {Router} from "@angular/router";
 import {JwtResponse} from "../_model/JwtResponse";
 import {catchError, map, shareReplay} from 'rxjs/operators';
-import {throwError} from "rxjs";
+import {Observable, throwError} from "rxjs";
+import {observableToBeFn} from 'rxjs/internal/testing/TestScheduler';
 
 @Injectable({
   providedIn: 'root'
@@ -38,7 +39,7 @@ export class AuthenticateService {
     );
   }
 
-  handleError(error) {
+  handleError(error): Observable<string> {
     if (error.status === 403) {
       window.alert('login or passe incorrect');
     }
