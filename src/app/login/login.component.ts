@@ -20,13 +20,19 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      userName: ['', Validators.required],
-      password: ['', Validators.required],
+      userName: [null, [Validators.required, Validators.minLength(3)]],
+      password: [null, [Validators.required, Validators.minLength(6)]],
     });
   }
 
   connect() {
-    this.authenticateService.login(this.form.controls.userName.value, this.form.controls.password.value).
-     subscribe((e) => console.log('Good'));
+    if (this.form.valid) {
+      this.authenticateService.login(this.form.controls.userName.value, this.form.controls.password.value).subscribe();
+    }
+  }
+
+  // convenience getter for easy access to form fields
+  get fieldForm() {
+    return this.form.controls;
   }
 }

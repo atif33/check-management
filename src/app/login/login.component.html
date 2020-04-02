@@ -1,18 +1,27 @@
 <div class="login-page">
   <div class="row">
     <div class="col-lg-4 col-lg-offset-4">
-      <img src="assets/images/flat-avatar.png" class="user-avatar" />
+      <img src="assets/images/flat-avatar.png" class="user-avatar"/>
       <h1>Gestion Cheques</h1>
-      <form  [formGroup]="form">
+      <form [formGroup]="form">
         <div class="form-content">
           <div class="form-group">
-            <input type="text" class="form-control input-underline input-lg"  placeholder="user name" formControlName="userName">
+            <input type="text" class="form-control input-underline input-lg" placeholder="Nom d'utilisateur"
+                   formControlName="userName">
+            <div *ngIf="fieldForm.userName.errors && fieldForm.userName.touched"
+                 class="text-danger">nom d'utilisateur invalid
+            </div>
           </div>
           <div class="form-group">
-            <input type="password" class="form-control input-underline input-lg"  placeholder="Password" formControlName="password">
+            <input type="password" class="form-control input-underline input-lg" placeholder="Mot de passe"
+                   formControlName="password">
+            <div class="text-danger" *ngIf="fieldForm.password.errors && fieldForm.password.touched">Mot de passe doit
+              avoir
+              6 carractere min
+            </div>
           </div>
         </div>
-        <a class="btn rounded-btn" (click)="connect()"> Log in </a>
+        <button class="btn rounded-btn"  (click)="connect()"> Log in</button>
       </form>
     </div>
   </div>
