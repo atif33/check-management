@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {CheckManagement} from '../_model/CheckManagement';
+import {Checks} from '../_model/Checks';
 import {Router} from '@angular/router';
 import {NgxSpinnerService} from 'ngx-spinner';
+import {CheckService} from '../_service/check.service';
 
 @Component({
   selector: 'app-check',
@@ -12,13 +13,12 @@ import {NgxSpinnerService} from 'ngx-spinner';
 export class CheckComponent implements OnInit {
   checks = ['Banque Populaire', 'Credit Agricole', 'LCL'];
   form: FormGroup;
-  checkManagement: CheckManagement;
-  toto;
+  checkManagement: Checks;
   message;
 
   constructor(private  formBuilder: FormBuilder,
               private spinner: NgxSpinnerService,
-              private router: Router) {
+              private checkService: CheckService) {
   }
 
   ngOnInit(): void {
@@ -45,15 +45,16 @@ export class CheckComponent implements OnInit {
 
   onSubmit(): void {
     const date: string = this.transformDate(this.form.controls.effectiveEndDate.value);
-    this.checkManagement = new CheckManagement(this.form.controls.amount.value, this.convertNumberToletter(),
+    this.checkManagement = new Checks(this.form.controls.amount.value, this.convertNumberToletter(),
       this.form.controls.name.value, this.form.controls.city.value, date);
-    console.log('check' + this.checkManagement);
-
     localStorage.setItem('checkInfoPrint', JSON.stringify(this.checkManagement));
-    this.spinner.show();
-    setTimeout(() => {
-      /** spinner ends after 5 seconds */
-      window.location.href = '(print:print/invoice)';
-    }, 2000);
+    this.checkService.createNewCheck(this.checkManagement).subscribe((val: Checks) => {
+      if (val !== null) {
+        this.spinner.show();
+        setTimeout(() => {
+          window.location.href = '(print:print/invoice)';
+        }, 2000);
+      }
+    });
   }
 }

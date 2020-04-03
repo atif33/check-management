@@ -31,7 +31,6 @@ export class AuthenticateService {
     return this.http.post<JwtResponse>(environment.api_url + '/api/auth/signin', {userName, password},
       {responseType: 'json'}).pipe(
       map((res: JwtResponse) => {
-        console.log('Inside Pipe');
         this.setSession(res);
       }),
       shareReplay(),

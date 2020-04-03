@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {CheckManagement} from '../_model/CheckManagement';
+import {Checks} from '../_model/Checks';
 
 @Component({
   selector: 'app-pdf-print',
@@ -7,7 +7,7 @@ import {CheckManagement} from '../_model/CheckManagement';
   styleUrls: ['./pdf-print.component.css']
 })
 export class PdfPrintComponent implements OnInit {
-  message: CheckManagement;
+  message: Checks;
 
   constructor() {
   }

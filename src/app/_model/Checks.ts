@@ -1,8 +1,8 @@
-export class CheckManagement {
-  amount: string;
+export class Checks {
+  amount: number;
   amountInLetter: string;
-  name?: string;
-  city?: string;
+  name: string;
+  city: string;
   effectiveEndDate: string;
 
   constructor(amount, amountInLetter, name, city, effectiveEndDate) {
