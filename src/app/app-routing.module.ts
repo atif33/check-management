@@ -3,6 +3,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {HomeComponent} from './home/home.component';
 import {PdfPrintComponent} from './pdf-print/pdf-print.component';
 import {LoginComponent} from './login/login.component';
+import {CheckComponent} from './check/check.component';
 
 
 const routes: Routes = [
@@ -10,6 +11,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: '', pathMatch: 'full', redirectTo: 'home'},
   {path: 'home', component: HomeComponent},
+  {path: 'cheks', component: CheckComponent},
   {
     path: 'print',
     outlet: 'print',

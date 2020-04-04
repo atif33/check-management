@@ -2,8 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthenticateService} from "../_service/authenticate.service";
-import {log} from "util";
-import {JwtResponse} from "../_model/JwtResponse";
 
 @Component({
   selector: 'app-home',

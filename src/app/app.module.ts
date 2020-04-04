@@ -14,7 +14,7 @@ import {CheckComponent} from './check/check.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {PdfPrintComponent} from './pdf-print/pdf-print.component';
 import {NgxSpinnerModule} from 'ngx-spinner';
-import {HttpClientModule} from "@angular/common/http";
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [

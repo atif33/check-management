@@ -49,12 +49,10 @@ export class CheckComponent implements OnInit {
       this.form.controls.name.value, this.form.controls.city.value, date);
     localStorage.setItem('checkInfoPrint', JSON.stringify(this.checkManagement));
     this.checkService.createNewCheck(this.checkManagement).subscribe((val: Checks) => {
-      if (val !== null) {
-        this.spinner.show();
-        setTimeout(() => {
-          window.location.href = '(print:print/invoice)';
-        }, 2000);
-      }
+      this.spinner.show();
+      setTimeout(() => {
+        window.location.href = '(print:print/invoice)';
+      }, 2000);
     });
   }
 }
