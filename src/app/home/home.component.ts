@@ -32,7 +32,6 @@ export class HomeComponent implements OnInit {
 
   sumAmountWithSimpleFor(): number {
     let some = 0;
-
     // tslint:disable-next-line:prefer-for-of
     for (let i = 0; i < this.checks.length; i++) {
       some += this.checks[i].amount;

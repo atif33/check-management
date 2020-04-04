@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
-import {subscribeOn} from "rxjs/operators";
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +12,12 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    if (sessionStorage.getItem('token') !== null) {
+      console.log('session' + sessionStorage.getItem('token'));
+      this.router.navigate(['/home']);
+    } else {
+      this.router.navigate(['/login']);
+    }
   }
 
 }

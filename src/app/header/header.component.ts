@@ -15,7 +15,7 @@ export class HeaderComponent implements OnInit {
   }
 
   logOut(): void {
-    localStorage.removeItem('checkInfoPrint');
+    sessionStorage.clear();
     this.router.navigate(['/login']);
   }
 }

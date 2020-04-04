@@ -7,7 +7,7 @@ import {FormGroup} from '@angular/forms';
   styleUrls: ['./contact-us.component.css']
 })
 export class ContactUsComponent implements OnInit {
-  contactForm: FormGroup;
+
   constructor() { }
 
   ngOnInit(): void {

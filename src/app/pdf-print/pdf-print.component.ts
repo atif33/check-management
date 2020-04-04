@@ -19,5 +19,6 @@ export class PdfPrintComponent implements OnInit {
     window.onafterprint = function (e) {
       window.location.href = 'home';
     };
+    localStorage.removeItem('checkInfoPrint');
   }
 }

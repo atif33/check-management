@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Checks} from '../_model/Checks';
-import {Router} from '@angular/router';
 import {NgxSpinnerService} from 'ngx-spinner';
 import {CheckService} from '../_service/check.service';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-check',
@@ -18,16 +18,17 @@ export class CheckComponent implements OnInit {
 
   constructor(private  formBuilder: FormBuilder,
               private spinner: NgxSpinnerService,
-              private checkService: CheckService) {
+              private checkService: CheckService,
+              private location: Location) {
   }
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      amount: ['', Validators.required],
-      amountInLetter: ['', Validators.required],
-      name: ['', Validators.required],
-      city: ['', Validators.required],
-      effectiveEndDate: ['', Validators.required]
+      amount: [null, Validators.required],
+      amountInLetter: [null, Validators.required],
+      name: [null, Validators.required],
+      city: [null, Validators.required],
+      effectiveEndDate: [null, Validators.required]
     });
 
   }
@@ -35,7 +36,7 @@ export class CheckComponent implements OnInit {
   convertNumberToletter(): string {
     // @ts-ignore
     const writtenNumber = require('written-number');
-    return writtenNumber(this.form.controls.amount.value, {lang: 'fr'}) + ' Dirham';
+    return writtenNumber(this.form.controls.amount.value, {lang: 'fr'}) + ' Dirhame';
   }
 
   transformDate(date): string {
@@ -54,5 +55,10 @@ export class CheckComponent implements OnInit {
         window.location.href = '(print:print/invoice)';
       }, 2000);
     });
+  }
+
+  resetForm(): void {
+    this.form.reset();
+    this.location.back();
   }
 }

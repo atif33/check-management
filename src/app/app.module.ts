@@ -15,6 +15,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {PdfPrintComponent} from './pdf-print/pdf-print.component';
 import {NgxSpinnerModule} from 'ngx-spinner';
 import {HttpClientModule} from '@angular/common/http';
+import {ContactUsComponent} from './contact-us/contact-us.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {HttpClientModule} from '@angular/common/http';
     HeaderComponent,
     FooterComponent,
     CheckComponent,
-    PdfPrintComponent
+    PdfPrintComponent,
+    ContactUsComponent
   ],
   imports: [
     BrowserModule,
