@@ -1,4 +1,15 @@
-h2 {
-  padding-top: 50px;
+.container {
+  width: 80%;
+  height: 80%;
+
+  padding-top: 60px;
+}
+ngb-alert {
+  font-size: 15px;
+  width: 70%;
+}
+strong {
+  margin-left: 3px;
+  color: red;
 }
 

@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {Checks} from '../_model/Checks';
 import {CheckService} from '../_service/check.service';
+import {NgbAlertConfig} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-home',
@@ -12,8 +13,11 @@ export class HomeComponent implements OnInit {
   checks: Array<Checks>;
   sumAmount: number;
   filter = new FormControl('');
-
-  constructor(private checkService: CheckService) {
+  @Input() public alerts: Array<string> = [];
+  constructor(private checkService: CheckService,
+              alertConfig: NgbAlertConfig) {
+    alertConfig.type = 'success';
+    alertConfig.dismissible = false;
   }
 
   ngOnInit(): void {
