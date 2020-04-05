@@ -12,7 +12,6 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('test for jenkins trigger 2');
   }
 
   connect() {

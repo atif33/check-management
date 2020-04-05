@@ -123,5 +123,8 @@
       }
     }
   },
-  "defaultProject": "gestion-cheques"
+  "defaultProject": "gestion-cheques",
+  "cli": {
+    "analytics": false
+  }
 }
