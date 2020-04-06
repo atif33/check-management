@@ -339,7 +339,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(HomeComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          console.log('22222222222222');
+          console.log('3333333333333');
         }
       }]);
 

@@ -182,7 +182,7 @@ class HomeComponent {
     constructor() {
     }
     ngOnInit() {
-        console.log('22222222222222');
+        console.log('3333333333333');
     }
 }
 HomeComponent.ɵfac = function HomeComponent_Factory(t) { return new (t || HomeComponent)(); };
