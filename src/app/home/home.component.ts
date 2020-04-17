@@ -25,6 +25,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.allChecks();
+
   }
 
   sumAmountWithSimpleFor(): number {
@@ -33,7 +34,6 @@ export class HomeComponent implements OnInit {
     for (let i = 0; i < this.checks.length; i++) {
       some += this.checks[i].amount;
     }
-    console.log(some);
     return some;
   }
 
@@ -56,6 +56,15 @@ export class HomeComponent implements OnInit {
     this.checkService.getAllchecks().subscribe((val: Checks[]) => {
       this.checks = val;
       this.calculAllAmount();
+      const date = new Date().getFullYear();
+      for (const da of val) {
+        if (date >= Number(da.effectiveEndDate)) {
+          da.opearation = true;
+        } else if (date < +da.effectiveEndDate) {
+          da.opearation = false;
+
+        }
+      }
     }, error => {
       console.log('err' + error);
     });
