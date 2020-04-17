@@ -16,6 +16,7 @@ import {PdfPrintComponent} from './pdf-print/pdf-print.component';
 import {NgxSpinnerModule} from 'ngx-spinner';
 import {HttpClientModule} from '@angular/common/http';
 import {ContactUsComponent} from './contact-us/contact-us.component';
+import {ToastrModule} from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import {ContactUsComponent} from './contact-us/contact-us.component';
     FooterComponent,
     CheckComponent,
     PdfPrintComponent,
-    ContactUsComponent
+    ContactUsComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,7 +38,8 @@ import {ContactUsComponent} from './contact-us/contact-us.component';
     ReactiveFormsModule,
     NgxSpinnerModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ToastrModule.forRoot()
 
 
   ],

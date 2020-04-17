@@ -1,44 +1,45 @@
 <div class="container">
-<form>
-  <div class="form-group form-inline">
-    <input class="form-control ml-2" type="text" [formControl]="filter"/>
-  </div>
-</form>
+  <form>
+    <div class="form-group form-inline">
+      <input class="form-control ml-2" type="text" [formControl]="filter"/>
+    </div>
+  </form>
 
-<table class="table table-striped">
-  <thead>
-  <tr>
-    <th scope="col">#</th>
-    <th scope="col">Nom</th>
-    <th scope="col">Montant</th>
-    <th scope="col">Ville</th>
-    <th scope="col">Date</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let check of checks ; index as i">
-    <th scope="row">{{check.id}}</th>
-    <td>
-      <ngb-highlight [result]="check.name" [term]="filter.value"></ngb-highlight>
-    </td>
-    <td>
-      <ngb-highlight [result]="check.amount | number" [term]="filter.value"></ngb-highlight>
-    </td>
-    <td>
-      <ngb-highlight [result]="check.city " [term]="filter.value"></ngb-highlight>
-    </td>
-    <td>
-      <ngb-highlight [result]="check.effectiveEndDate" [term]="filter.value"></ngb-highlight>
-    </td>
-    <td>
-      <button class="btn btn-danger" (click)="deleteCheck(check.id)">supprimer</button>
-    </td>
-  </tr>
-  <p>
-    <ngb-alert class="mt-3">
-      Montant total de vos chèques:  <strong>{{sumAmount}} DH</strong>
-    </ngb-alert>
-  </p>
-  </tbody>
-</table>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nom</th>
+      <th scope="col">Montant</th>
+      <th scope="col">Ville</th>
+      <th scope="col">Date</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let check of checks ; index as i">
+      <th scope="row">{{check.id}}</th>
+      <td>
+        <ngb-highlight [result]="check.name" [term]="filter.value"></ngb-highlight>
+      </td>
+      <td>
+        <ngb-highlight [result]="check.amount | number" [term]="filter.value"></ngb-highlight>
+      </td>
+      <td>
+        <ngb-highlight [result]="check.city " [term]="filter.value"></ngb-highlight>
+      </td>
+      <td>
+        <ngb-highlight [result]="check.effectiveEndDate" [term]="filter.value"></ngb-highlight>
+      </td>
+      <td>
+        <button class="btn btn-danger" (click)="deleteCheck(check.id)">supprimer</button>
+      </td>
+    </tr>
+
+    <p>
+      <ngb-alert class="mt-3">
+        Montant total de vos chèques: <strong>{{sumAmount}} DH</strong>
+      </ngb-alert>
+    </p>
+    </tbody>
+  </table>
 </div>

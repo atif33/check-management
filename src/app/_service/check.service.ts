@@ -28,4 +28,12 @@ export class CheckService {
 
     return this.http.get(environment.api_url + '/api/check/getChecks', {headers: header});
   }
+
+  deleteCheck(id: number) {
+    const header = new HttpHeaders({
+      Authorization: sessionStorage.getItem('token'),
+      'Content-Type': 'application/json'
+    });
+    return this.http.delete(environment.api_url + '/api/check/delete?id=' + id, {headers: header});
+  }
 }

@@ -1,34 +1,30 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {Checks} from '../_model/Checks';
 import {CheckService} from '../_service/check.service';
 import {NgbAlertConfig} from '@ng-bootstrap/ng-bootstrap';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
   checks: Array<Checks>;
   sumAmount: number;
   filter = new FormControl('');
-  @Input() public alerts: Array<string> = [];
+
 
   constructor(private checkService: CheckService,
-              alertConfig: NgbAlertConfig) {
+              alertConfig: NgbAlertConfig,
+              private toasterService: ToastrService) {
     alertConfig.type = 'success';
     alertConfig.dismissible = false;
   }
 
   ngOnInit(): void {
-    this.checkService.getAllchecks().subscribe((val: Checks[]) => {
-      this.checks = val;
-      this.calculAllAmount();
-    }, error => {
-      console.log('err' + error);
-    });
-
+    this.allChecks();
   }
 
   sumAmountWithSimpleFor(): number {
@@ -50,6 +46,19 @@ export class HomeComponent implements OnInit {
   }
 
   deleteCheck(id: number): void {
-
+    this.checkService.deleteCheck(id).subscribe((val) => {
+      this.toasterService.success('Chèque bien supprimerh', 'Cool!');
+      this.allChecks();
+    });
   }
+
+  allChecks(): void {
+    this.checkService.getAllchecks().subscribe((val: Checks[]) => {
+      this.checks = val;
+      this.calculAllAmount();
+    }, error => {
+      console.log('err' + error);
+    });
+  }
+
 }
