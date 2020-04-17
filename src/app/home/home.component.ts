@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit {
   sumAmount: number;
   filter = new FormControl('');
   @Input() public alerts: Array<string> = [];
+
   constructor(private checkService: CheckService,
               alertConfig: NgbAlertConfig) {
     alertConfig.type = 'success';
@@ -46,5 +47,9 @@ export class HomeComponent implements OnInit {
       some += check.amount;
     }
     this.sumAmount = some;
+  }
+
+  deleteCheck(id: number): void {
+
   }
 }

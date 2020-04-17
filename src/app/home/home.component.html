@@ -17,7 +17,7 @@
   </thead>
   <tbody>
   <tr *ngFor="let check of checks ; index as i">
-    <th scope="row">{{ i + 1 }}</th>
+    <th scope="row">{{check.id}}</th>
     <td>
       <ngb-highlight [result]="check.name" [term]="filter.value"></ngb-highlight>
     </td>
@@ -29,6 +29,9 @@
     </td>
     <td>
       <ngb-highlight [result]="check.effectiveEndDate" [term]="filter.value"></ngb-highlight>
+    </td>
+    <td>
+      <button class="btn btn-danger" (click)="deleteCheck(check.id)">supprimer</button>
     </td>
   </tr>
   <p>
