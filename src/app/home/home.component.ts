@@ -1,9 +1,10 @@
-import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {Checks} from '../_model/Checks';
 import {CheckService} from '../_service/check.service';
 import {NgbAlertConfig} from '@ng-bootstrap/ng-bootstrap';
 import {ToastrService} from 'ngx-toastr';
+import {User} from '../_model/user';
 
 @Component({
   selector: 'app-home',
@@ -14,6 +15,7 @@ export class HomeComponent implements OnInit {
   checks: Array<Checks>;
   sumAmount: number;
   filter = new FormControl('');
+  hideSpan = false;
 
 
   constructor(private checkService: CheckService,
@@ -45,22 +47,27 @@ export class HomeComponent implements OnInit {
     this.sumAmount = some;
   }
 
+  toot() {
+    this.hideSpan = true;
+  }
+
   deleteCheck(id: number): void {
     this.checkService.deleteCheck(id).subscribe((val) => {
-      this.toasterService.success('Chèque bien supprimerh', 'Cool!');
+      this.toasterService.error('Chèque bien supprimerh', 'Cool!');
       this.allChecks();
     });
   }
 
   allChecks(): void {
-    this.checkService.getAllchecks().subscribe((val: Checks[]) => {
+    const userId: User = JSON.parse(sessionStorage.getItem('user')).id;
+    this.checkService.getAllchecks(userId).subscribe((val: Checks[]) => {
       this.checks = val;
       this.calculAllAmount();
-      const date = new Date().getFullYear();
+      const date = new Date();
       for (const da of val) {
-        if (date >= Number(da.effectiveEndDate)) {
+        if (date >= new Date(da.effectiveEndDate)) {
           da.opearation = true;
-        } else if (date < +da.effectiveEndDate) {
+        } else if (date < new Date(da.effectiveEndDate)) {
           da.opearation = false;
 
         }

@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Checks} from '../_model/Checks';
+import {Router} from '@angular/router';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-pdf-print',
@@ -9,7 +11,9 @@ import {Checks} from '../_model/Checks';
 export class PdfPrintComponent implements OnInit {
   message: Checks;
 
-  constructor() {
+  constructor(private router: Router,
+              private  toastrService: ToastrService) {
+
   }
 
   ngOnInit(): void {
@@ -17,8 +21,10 @@ export class PdfPrintComponent implements OnInit {
     window.print();
     // TODO Refacto to Ts
     window.onafterprint = function (e) {
+      console.log('totoot');
       window.location.href = 'home';
     };
+    this.toastrService.success('Bien imprimer', 'okkk');
     localStorage.removeItem('checkInfoPrint');
   }
 }

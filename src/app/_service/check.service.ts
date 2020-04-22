@@ -20,13 +20,13 @@ export class CheckService {
     return this.http.post(environment.api_url + '/api/check/saveCheck', checks, {headers: header});
   }
 
-  getAllchecks() {
+  getAllchecks(useriD) {
     const header = new HttpHeaders({
       Authorization: sessionStorage.getItem('token'),
       'Content-Type': 'application/json'
     });
 
-    return this.http.get(environment.api_url + '/api/check/getChecks', {headers: header});
+    return this.http.get(environment.api_url + '/api/check/getChecks?userId=' + useriD, {headers: header});
   }
 
   deleteCheck(id: number) {

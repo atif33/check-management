@@ -4,6 +4,9 @@ import {Checks} from '../_model/Checks';
 import {NgxSpinnerService} from 'ngx-spinner';
 import {CheckService} from '../_service/check.service';
 import {Location} from '@angular/common';
+import {Router} from '@angular/router';
+import {User} from '../_model/user';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-check',
@@ -19,7 +22,8 @@ export class CheckComponent implements OnInit {
   constructor(private  formBuilder: FormBuilder,
               private spinner: NgxSpinnerService,
               private checkService: CheckService,
-              private location: Location) {
+              private location: Location,
+              private toastService: ToastrService) {
   }
 
   ngOnInit(): void {
@@ -46,8 +50,9 @@ export class CheckComponent implements OnInit {
 
   onSubmit(): void {
     const date: string = this.transformDate(this.form.controls.effectiveEndDate.value);
-    this.checkManagement = new Checks(this.form.controls.amount.value, this.convertNumberToletter(),
-      this.form.controls.name.value, this.form.controls.city.value, date);
+    const user: User = JSON.parse(sessionStorage.getItem('user'));
+    this.checkManagement = new Checks(null, this.form.controls.amount.value, this.convertNumberToletter(),
+      this.form.controls.name.value, this.form.controls.city.value, date, 0, user);
     localStorage.setItem('checkInfoPrint', JSON.stringify(this.checkManagement));
     this.checkService.createNewCheck(this.checkManagement).subscribe((val: Checks) => {
       this.spinner.show();

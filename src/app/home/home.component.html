@@ -32,15 +32,15 @@
         <ngb-highlight [result]="check.effectiveEndDate" [term]="filter.value"></ngb-highlight>
       </td>
       <td>
-        <span class="badge badge-success font-size" [ngClass]="check.opearation ? 'badge badge-danger font-size' : 'badge badge-success font-size'">
-          {{check.opearation ? 'pas encore payé' : 'payé'}}
+        <span class="badge badge-success font-size" [ngClass]="check.opearation ? 'badge badge-success font-size' : 'badge badge-danger font-size'">
+          {{check.opearation ? 'payé' : 'pas encore payé'}}
         </span>
       </td>
       <td>
         <button class="btn btn-danger" (click)="deleteCheck(check.id)">supprimer</button>
       </td>
     </tr>
-    </tbody>
+    </tbody>h
   </table>
   <p>
     <ngb-alert class="mt-3">

@@ -1,11 +1,10 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {environment} from "../../environments/environment";
-import {Router} from "@angular/router";
-import {JwtResponse} from "../_model/JwtResponse";
+import {HttpClient} from '@angular/common/http';
+import {environment} from '../../environments/environment';
+import {Router} from '@angular/router';
+import {JwtResponse} from '../_model/JwtResponse';
 import {catchError, map, shareReplay} from 'rxjs/operators';
-import {Observable, throwError} from "rxjs";
-import {observableToBeFn} from 'rxjs/internal/testing/TestScheduler';
+import {Observable, throwError} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +16,7 @@ export class AuthenticateService {
   }
 
   private setSession(authSession): void {
-    sessionStorage.setItem('email', authSession.email);
+    sessionStorage.setItem('user', JSON.stringify(authSession.user));
     const token = 'Bearer ' + authSession.token;
     sessionStorage.setItem('token', token);
     this.navigatoToPageHome();
