@@ -5,6 +5,9 @@ import {CheckService} from '../_service/check.service';
 import {NgbAlertConfig} from '@ng-bootstrap/ng-bootstrap';
 import {ToastrService} from 'ngx-toastr';
 import {User} from '../_model/user';
+import {MapsAPILoader} from '@agm/core';
+
+declare var google;
 
 @Component({
   selector: 'app-home',

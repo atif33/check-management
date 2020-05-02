@@ -17,6 +17,7 @@ import {NgxSpinnerModule} from 'ngx-spinner';
 import {HttpClientModule} from '@angular/common/http';
 import {ContactUsComponent} from './contact-us/contact-us.component';
 import {ToastrModule} from 'ngx-toastr';
+import {AgmCoreModule} from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,12 @@ import {ToastrModule} from 'ngx-toastr';
     NgxSpinnerModule,
     FormsModule,
     HttpClientModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    AgmCoreModule.forRoot({
+      // please get your own API key here:
+      // https://developers.google.com/maps/documentation/javascript/get-api-key?hl=en
+      apiKey: ''
+    })
 
 
   ],
