@@ -63,15 +63,6 @@ export class HomeComponent implements OnInit {
     this.checkService.getAllchecks(userId).subscribe((val: Checks[]) => {
       this.checks = val;
       this.calculAllAmount();
-      const date = new Date();
-      for (const da of val) {
-        if (date >= new Date(da.effectiveEndDate)) {
-          da.opearation = true;
-        } else if (date < new Date(da.effectiveEndDate)) {
-          da.opearation = false;
-
-        }
-      }
     }, error => {
       console.log('err' + error);
     });

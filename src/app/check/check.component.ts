@@ -32,7 +32,8 @@ export class CheckComponent implements OnInit {
       amountInLetter: [null, Validators.required],
       name: [null, Validators.required],
       city: [null, Validators.required],
-      effectiveEndDate: [null, Validators.required]
+      effectiveEndDate: [null, Validators.required],
+      status: [null, Validators.required]
     });
 
   }
@@ -52,7 +53,7 @@ export class CheckComponent implements OnInit {
     const date: string = this.transformDate(this.form.controls.effectiveEndDate.value);
     const user: User = JSON.parse(sessionStorage.getItem('user'));
     this.checkManagement = new Checks(null, this.form.controls.amount.value, this.convertNumberToletter(),
-      this.form.controls.name.value, this.form.controls.city.value, date, 0, user);
+      this.form.controls.name.value, this.form.controls.city.value, date, this.form.controls.status.value, user);
     localStorage.setItem('checkInfoPrint', JSON.stringify(this.checkManagement));
     this.checkService.createNewCheck(this.checkManagement).subscribe((val: Checks) => {
       this.spinner.show();
