@@ -28,7 +28,7 @@ import {AgmCoreModule} from '@agm/core';
     FooterComponent,
     CheckComponent,
     PdfPrintComponent,
-    ContactUsComponent,
+    ContactUsComponent
   ],
   imports: [
     BrowserModule,
@@ -52,4 +52,5 @@ import {AgmCoreModule} from '@agm/core';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
