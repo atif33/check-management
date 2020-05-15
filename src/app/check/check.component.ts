@@ -41,7 +41,7 @@ export class CheckComponent implements OnInit {
   convertNumberToletter(): string {
     // @ts-ignore
     const writtenNumber = require('written-number');
-    return writtenNumber(this.form.controls.amount.value, {lang: 'fr'}) + ' Dirhame';
+    return writtenNumber(this.form.controls.amount.value, {lang: 'fr'}) + ' dirham';
   }
 
   transformDate(date): string {

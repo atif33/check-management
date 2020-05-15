@@ -3,7 +3,6 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {MapsAPILoader} from '@agm/core';
 import {ContactService} from '../_service/contact.service';
 import {Contact} from '../_model/Contact';
-import {NgbModal, NgbModalConfig} from '@ng-bootstrap/ng-bootstrap';
 
 declare var google;
 
