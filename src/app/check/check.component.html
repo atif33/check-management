@@ -1,14 +1,5 @@
-<ngx-spinner
-  bdOpacity=0.9
-  bdColor="#333"
-  size="medium"
-  color="#fff"
-  type="timer"
-  [fullScreen]="true"
->
-  <p style="color: white"> Impression en cours... </p>
-</ngx-spinner>
-<form [formGroup]="form" class="ml-3">
+<div class="container mt-3">
+<form [formGroup]="form">
   <div class="form-row">
     <div class="form-group col-md-3">
       <label for="inputState">Banque</label>
@@ -30,11 +21,11 @@
   <div class="form-row">
     <div class="form-group col-md-3">
       <label for="inputPrenom">A</label>
-      <input type="text" class="form-control text-danger" id="inputPrenom" placeholder="nom" formControlName="name">
+      <input type="text" class="form-control" id="inputPrenom" placeholder="nom" formControlName="name">
     </div>
     <div class="form-group col-md-3">
       <label>Status</label>
-      <select class="form-control text-success" formControlName="status">
+      <select class="form-control" formControlName="status">
         <option class="text-success">Payé</option>
         <option class="text-danger" selected>Non payé</option>
       </select>
@@ -57,4 +48,4 @@
   <button type="submit" class="btn btn-success" (click)="onSubmit()">Imprimer</button>
   <button class="btn btn-danger ml-1" (click)="resetForm()">Annuler</button>
 </form>
-<router-outlet></router-outlet>
+</div>

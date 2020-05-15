@@ -4,7 +4,6 @@ import {Checks} from '../_model/Checks';
 import {NgxSpinnerService} from 'ngx-spinner';
 import {CheckService} from '../_service/check.service';
 import {Location} from '@angular/common';
-import {Router} from '@angular/router';
 import {User} from '../_model/user';
 import {ToastrService} from 'ngx-toastr';
 
