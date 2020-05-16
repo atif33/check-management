@@ -11,8 +11,7 @@ import {ToastrService} from 'ngx-toastr';
 export class PdfPrintComponent implements OnInit {
   message: Checks;
 
-  constructor(private router: Router,
-              private  toastrService: ToastrService) {
+  constructor() {
 
   }
 
@@ -24,7 +23,6 @@ export class PdfPrintComponent implements OnInit {
       console.log('totoot');
       window.location.href = 'home';
     };
-    this.toastrService.success('Bien imprimer', 'okkk');
     localStorage.removeItem('checkInfoPrint');
   }
 }

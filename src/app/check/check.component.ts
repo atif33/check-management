@@ -6,6 +6,7 @@ import {CheckService} from '../_service/check.service';
 import {Location} from '@angular/common';
 import {User} from '../_model/user';
 import {ToastrService} from 'ngx-toastr';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-check',

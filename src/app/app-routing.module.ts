@@ -14,6 +14,7 @@ const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'cheks', component: CheckComponent},
   {path: 'contact', component: ContactUsComponent},
+  {path: 'pdf', component: PdfPrintComponent},
   {
     path: 'print',
     outlet: 'print',

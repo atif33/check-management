@@ -12,11 +12,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (sessionStorage.getItem('token') !== null) {
-      this.router.navigate(['/home']);
-    } else {
-      this.router.navigate(['/login']);
-    }
+
   }
 
 }
