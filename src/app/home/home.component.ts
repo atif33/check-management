@@ -5,7 +5,6 @@ import {CheckService} from '../_service/check.service';
 import {NgbAlertConfig} from '@ng-bootstrap/ng-bootstrap';
 import {ToastrService} from 'ngx-toastr';
 import {User} from '../_model/user';
-import {MapsAPILoader} from '@agm/core';
 
 declare var google;
 
@@ -18,7 +17,6 @@ export class HomeComponent implements OnInit {
   checks: Array<Checks>;
   sumAmount: number;
   filter = new FormControl('');
-  hideSpan = false;
 
 
   constructor(private checkService: CheckService,
@@ -50,10 +48,6 @@ export class HomeComponent implements OnInit {
     this.sumAmount = some;
   }
 
-  toot() {
-    this.hideSpan = true;
-  }
-
   deleteCheck(id: number): void {
     this.checkService.deleteCheck(id).subscribe((val) => {
       this.toasterService.error('Chèque bien supprimerh', 'Cool!');
@@ -70,9 +64,4 @@ export class HomeComponent implements OnInit {
       console.log('err' + error);
     });
   }
-
-  onSort(event) {
-    return 'desc';
-  }
-
 }
