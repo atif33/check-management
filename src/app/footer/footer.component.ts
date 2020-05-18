@@ -1,4 +1,4 @@
-import {Component, ElementRef, HostListener, OnInit, Renderer2} from '@angular/core';
+import {Component, ElementRef, EventEmitter, HostListener, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-footer',
@@ -6,13 +6,18 @@ import {Component, ElementRef, HostListener, OnInit, Renderer2} from '@angular/c
   styleUrls: ['./footer.component.css']
 })
 export class FooterComponent implements OnInit {
+  @Output() messageEvent = new EventEmitter<string>();
 
-  constructor(private el: ElementRef, private renderer: Renderer2) {
+  constructor() {
   }
 
   ngOnInit(): void {
   }
 
+
+  sendMessage() {
+    this.messageEvent.emit('out');
+  }
 
 
 }

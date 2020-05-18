@@ -18,6 +18,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {ContactUsComponent} from './contact-us/contact-us.component';
 import {ToastrModule} from 'ngx-toastr';
 import {AgmCoreModule} from '@agm/core';
+import {ConvertDeviceComponent} from './convert-device/convert-device.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import {AgmCoreModule} from '@agm/core';
     FooterComponent,
     CheckComponent,
     PdfPrintComponent,
-    ContactUsComponent
+    ContactUsComponent,
+    ConvertDeviceComponent
   ],
   imports: [
     BrowserModule,

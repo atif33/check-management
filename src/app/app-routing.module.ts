@@ -5,6 +5,7 @@ import {PdfPrintComponent} from './pdf-print/pdf-print.component';
 import {LoginComponent} from './login/login.component';
 import {CheckComponent} from './check/check.component';
 import {ContactUsComponent} from './contact-us/contact-us.component';
+import {ConvertDeviceComponent} from './convert-device/convert-device.component';
 
 
 const routes: Routes = [
@@ -14,7 +15,7 @@ const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'cheks', component: CheckComponent},
   {path: 'contact', component: ContactUsComponent},
-  {path: 'pdf', component: PdfPrintComponent},
+  {path: 'convert', component: ConvertDeviceComponent},
   {
     path: 'print',
     outlet: 'print',
