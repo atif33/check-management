@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {AuthenticateService} from "../_service/authenticate.service";
+import {AuthenticateService} from '../_service/authenticate.service';
 
 @Component({
   selector: 'app-home',
@@ -9,6 +9,7 @@ import {AuthenticateService} from "../_service/authenticate.service";
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  images = [Math.floor((Math.random() * 1000) + 1)].map((n) => `https://picsum.photos/id/${n}/1920/1080`);
   form: FormGroup;
   submit = false;
 
@@ -18,6 +19,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log('image' + this.images);
     this.form = this.formBuilder.group({
       userName: [null, [Validators.required, Validators.minLength(3)]],
       password: [null, [Validators.required, Validators.minLength(6)]],
