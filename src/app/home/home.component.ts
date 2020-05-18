@@ -5,6 +5,7 @@ import {CheckService} from '../_service/check.service';
 import {NgbAlertConfig} from '@ng-bootstrap/ng-bootstrap';
 import {ToastrService} from 'ngx-toastr';
 import {User} from '../_model/user';
+import {Router} from '@angular/router';
 
 declare var google;
 
@@ -21,7 +22,8 @@ export class HomeComponent implements OnInit {
 
   constructor(private checkService: CheckService,
               alertConfig: NgbAlertConfig,
-              private toasterService: ToastrService) {
+              private toasterService: ToastrService,
+              private router: Router) {
     alertConfig.type = 'success';
     alertConfig.dismissible = false;
   }
@@ -63,5 +65,9 @@ export class HomeComponent implements OnInit {
     }, error => {
       console.log('err' + error);
     });
+  }
+
+  addNewCheck() {
+    this.router.navigate(['/cheks']);
   }
 }
