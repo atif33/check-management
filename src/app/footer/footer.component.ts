@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, HostListener, OnInit, Renderer2} from '@angular/core';
 
 @Component({
   selector: 'app-footer',
@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  constructor() { }
+  constructor(private el: ElementRef, private renderer: Renderer2) {
+  }
 
   ngOnInit(): void {
   }
+
+
 
 }
