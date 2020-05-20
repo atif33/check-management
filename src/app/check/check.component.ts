@@ -6,7 +6,6 @@ import {CheckService} from '../_service/check.service';
 import {Location} from '@angular/common';
 import {User} from '../_model/user';
 import {ToastrService} from 'ngx-toastr';
-import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-check',
@@ -18,6 +17,7 @@ export class CheckComponent implements OnInit {
   form: FormGroup;
   checkManagement: Checks;
   message;
+  showCalculator: boolean;
 
   constructor(private  formBuilder: FormBuilder,
               private spinner: NgxSpinnerService,
@@ -61,6 +61,10 @@ export class CheckComponent implements OnInit {
         window.location.href = '(print:print/invoice)';
       }, 2000);
     });
+  }
+
+  activeCalculator(): void {
+      this.showCalculator = this.showCalculator !== true;
   }
 
   resetForm(): void {

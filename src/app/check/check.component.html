@@ -1,51 +1,59 @@
-<div class="container mt-3">
-<form [formGroup]="form">
-  <div class="form-row">
-    <div class="form-group col-md-3">
-      <label for="inputState">Banque</label>
-      <select id="inputState" class="form-control">
-        <option selected *ngFor="let check of checks">{{check}}</option>
-      </select>
-    </div>
-    <div class="form-group col-md-3">
-      <label for="inputMontant">Montant</label>
-      <input type="text" class="form-control" id="inputMontant" placeholder="Montant"
-             formControlName="amount">
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="inputMontantLettre">Montant en lettre</label>
-    <input type="text" class="form-control col-md-6" id="inputMontantLettre" placeholder="montant en lettre"
-           value="{{convertNumberToletter()}}" formControlName="amountInLetter" disabled>
-  </div>
-  <div class="form-row">
-    <div class="form-group col-md-3">
-      <label for="inputPrenom">A</label>
-      <input type="text" class="form-control" id="inputPrenom" placeholder="nom" formControlName="name">
-    </div>
-    <div class="form-group col-md-3">
-      <label>Status</label>
-      <select class="form-control" formControlName="status">
-        <option class="text-success">Payé</option>
-        <option class="text-danger" selected>Non payé</option>
-      </select>
-    </div>
-  </div>
-  <div class="form-row">
-    <div class="form-group col-md-3">
-      <label for="inputCity">Fait a</label>
-      <input type="text" class="form-control" id="inputCity" formControlName="city">
-    </div>
-    <div class="form-group col-md-3">
-      <label>Le</label>
-      <input class="form-control" placeholder="yyyy-mm-dd"
-             name="dp" ngbDatepicker #d="ngbDatepicker" formControlName="effectiveEndDate">
-      <div class="input-group-append">
-        <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button"></button>
+<div class="container mt-3 titi2">
+  <form [formGroup]="form" >
+    <div class="form-row">
+      <div class="form-group col-md-5">
+        <label for="inputState">Banque</label>
+        <select id="inputState" class="form-control">
+          <option selected *ngFor="let check of checks">{{check}}</option>
+        </select>
+      </div>
+      <div class="form-group col-md-5">
+        <label for="inputMontant">Montant</label>
+        <input type="text" class="form-control" id="inputMontant" placeholder="Montant"
+               formControlName="amount">
       </div>
     </div>
-  </div>
-  <button type="submit" class="btn btn-success" (click)="onSubmit()">Imprimer</button>
-  <button class="btn btn-danger ml-1" (click)="resetForm()">Annuler</button>
-</form>
+    <div class="form-group">
+      <label for="inputMontantLettre">Montant en lettre</label>
+      <input type="text" class="form-control col-md-10" id="inputMontantLettre" placeholder="montant en lettre"
+             value="{{convertNumberToletter()}}" formControlName="amountInLetter" disabled>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-5">
+        <label for="inputPrenom">A</label>
+        <input type="text" class="form-control" id="inputPrenom" placeholder="nom" formControlName="name">
+      </div>
+      <div class="form-group col-md-5">
+        <label>Status</label>
+        <select class="form-control" formControlName="status">
+          <option class="text-success">Payé</option>
+          <option class="text-danger" selected>Non payé</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-5">
+        <label for="inputCity">Fait a</label>
+        <input type="text" class="form-control" id="inputCity" formControlName="city">
+      </div>
+      <div class="form-group col-md-5">
+        <label>Le</label>
+        <input class="form-control" placeholder="yyyy-mm-dd"
+               name="dp" ngbDatepicker #d="ngbDatepicker" formControlName="effectiveEndDate">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button"></button>
+        </div>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-success" (click)="onSubmit()">Imprimer</button>
+    <button class="btn btn-danger ml-1" (click)="resetForm()">Annuler</button>
+  </form>
+
+  <img src="assets/images/calculator.png" height="50" width="56" class="btn btn-outline-danger border-0"
+  (click)="activeCalculator()">
+
+<div *ngIf="showCalculator">
+    <app-calcultor></app-calcultor>
 </div>
+</div>
+

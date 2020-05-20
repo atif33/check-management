@@ -19,6 +19,7 @@ import {ContactUsComponent} from './contact-us/contact-us.component';
 import {ToastrModule} from 'ngx-toastr';
 import {AgmCoreModule} from '@agm/core';
 import {ConvertDeviceComponent} from './convert-device/convert-device.component';
+import { CalculatorComponent } from './calcultor/calculator.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import {ConvertDeviceComponent} from './convert-device/convert-device.component'
     CheckComponent,
     PdfPrintComponent,
     ContactUsComponent,
-    ConvertDeviceComponent
+    ConvertDeviceComponent,
+    CalculatorComponent
   ],
   imports: [
     BrowserModule,

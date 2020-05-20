@@ -24,7 +24,6 @@ export class HeaderComponent implements OnInit {
   }
 
   toggleMenu() {
-    // this.menuState = this.menuState === 'out' ? 'in' : 'out';
     if (this.menuState === 'out') {
       this.menuState = 'in';
     } else {
@@ -33,7 +32,6 @@ export class HeaderComponent implements OnInit {
   }
 
   receiveMessage($event) {
-    console.log('event  ' + $event);
     this.menuState = $event;
 
   }
