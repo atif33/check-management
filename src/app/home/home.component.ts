@@ -19,6 +19,8 @@ export class HomeComponent implements OnInit {
   sumAmount: number;
   filter = new FormControl('');
 
+  closeAlert: boolean;
+
 
   constructor(private checkService: CheckService,
               alertConfig: NgbAlertConfig,
