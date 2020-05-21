@@ -36,4 +36,14 @@ export class CheckService {
     });
     return this.http.delete(environment.api_url + '/api/check/delete?id=' + id, {headers: header});
   }
+
+  updatCheck(id: number, newStatus: string) {
+    const header = new HttpHeaders({
+      Authorization: sessionStorage.getItem('token'),
+      'Content-Type': 'application/json',
+      status: newStatus
+    });
+    return this.http.post(environment.api_url + '/api/check/updatCheck?id=' + id, {},
+      {headers: header});
+  }
 }

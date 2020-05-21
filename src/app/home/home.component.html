@@ -1,9 +1,9 @@
 <div class="container">
   <form>
     <div class="row mt-2">
-    <div class="col form-inline">
-      <input class="form-control" type="text" [formControl]="filter"/>
-    </div>
+      <div class="col form-inline">
+        <input class="form-control" type="text" [formControl]="filter"/>
+      </div>
       <div class="col">
         <img src="assets/images/add.svg" class="btn btn-outline-danger border-0 float-right"
              height="60" width="60" (click)="addNewCheck()">
@@ -45,16 +45,44 @@
         </span>
       </td>
       <td>
-        <img src="assets/images/trash-outline.svg"  class="btn btn-outline-danger border-0" height="50" width="50"
+        <img src="assets/images/trash-outline.svg" class="btn btn-outline-danger border-0" height="50" width="50"
              (click)="deleteCheck(check.id)">
+        <img src="assets/images/edit.svg" class="btn btn-outline-danger border-0" height="50" width="50"
+             (click)="open(content)">
       </td>
+      <ng-template #content let-c="close" let-d="dismiss">
+
+        <div class="modal-header">
+          <h4 class="modal-title" id="modal-basic-title">Chèque N {{check.id}}</h4>
+          <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form [formGroup]="formUpdat">
+          <div class="form-group">
+            <label>Status</label>
+            <select class="form-control"
+                    formControlName="status">
+              <option class="text-success">Payé</option>
+              <option class="text-danger">Non payé</option>
+            </select>
+          </div>
+        </form>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" (click)="d('Cross click')">Annuler</button>
+          <button type="button" class="btn btn-outline-dark" (click)="updatCheque(check.id)">Modifier</button>
+
+        </div>
+
+      </ng-template>
+
     </tr>
     </tbody>
   </table>
   <p>
     <ngb-alert class="mt-3s" type="warning" *ngIf="!closeAlert">
       Montant total de vos chèques: <strong>{{sumAmount}} DH</strong>
-      <button type="button" class="close"  (click)="closeAlert=true">
+      <button type="button" class="close" (click)="closeAlert=true">
         <span aria-hidden="true">&times;</span>
       </button>
     </ngb-alert>

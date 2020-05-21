@@ -1,13 +1,12 @@
-import {Component, OnInit} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Checks} from '../_model/Checks';
 import {CheckService} from '../_service/check.service';
-import {NgbAlertConfig} from '@ng-bootstrap/ng-bootstrap';
+import {NgbActiveModal, NgbAlertConfig, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {ToastrService} from 'ngx-toastr';
 import {User} from '../_model/user';
 import {Router} from '@angular/router';
 
-declare var google;
 
 @Component({
   selector: 'app-home',
@@ -18,20 +17,23 @@ export class HomeComponent implements OnInit {
   checks: Array<Checks>;
   sumAmount: number;
   filter = new FormControl('');
-
+  formUpdat: FormGroup;
   closeAlert: boolean;
 
 
   constructor(private checkService: CheckService,
               alertConfig: NgbAlertConfig,
               private toasterService: ToastrService,
-              private router: Router) {
+              private router: Router,
+              private modalService: NgbModal,
+              private formBuilder: FormBuilder) {
     alertConfig.type = 'success';
     alertConfig.dismissible = false;
   }
 
   ngOnInit(): void {
     this.allChecks();
+    this.initForm();
 
   }
 
@@ -72,4 +74,24 @@ export class HomeComponent implements OnInit {
   addNewCheck() {
     this.router.navigate(['/cheks']);
   }
+
+
+  open(content) {
+    this.modalService.open(content);
+  }
+
+  initForm() {
+    this.formUpdat = this.formBuilder.group({
+      status: [null, [Validators.required]]
+    });
+  }
+
+  updatCheque(id: number) {
+    const newStatus = this.formUpdat.controls.status.value;
+    console.log('titit' + newStatus);
+    this.checkService.updatCheck(id, newStatus).subscribe();
+    this.modalService.dismissAll('Cross click');
+    this.allChecks();
+  }
+
 }
