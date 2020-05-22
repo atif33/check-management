@@ -20,6 +20,7 @@ import {ToastrModule} from 'ngx-toastr';
 import {AgmCoreModule} from '@agm/core';
 import {ConvertDeviceComponent} from './convert-device/convert-device.component';
 import { CalculatorComponent } from './calcultor/calculator.component';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { CalculatorComponent } from './calcultor/calculator.component';
       // please get your own API key here:
       // https://developers.google.com/maps/documentation/javascript/get-api-key?hl=en
       apiKey: ''
-    })
+    }),
+    NgxPaginationModule
 
 
   ],

@@ -33,7 +33,6 @@ export class LoginComponent implements OnInit {
       this.authenticateService.login(this.form.controls.userName.value, this.form.controls.password.value).subscribe();
     }
   }
-
   // convenience getter for easy access to form fields
   get fieldForm() {
     return this.form.controls;

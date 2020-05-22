@@ -1,11 +1,11 @@
-import {AfterContentInit, ChangeDetectorRef, Component, ElementRef, OnChanges, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Checks} from '../_model/Checks';
 import {CheckService} from '../_service/check.service';
-import {NgbActiveModal, NgbAlertConfig, NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {NgbAlertConfig, NgbModal, NgbPaginationConfig} from '@ng-bootstrap/ng-bootstrap';
 import {ToastrService} from 'ngx-toastr';
 import {User} from '../_model/user';
-import {Router, RouterEvent} from '@angular/router';
+import {Router} from '@angular/router';
 import {Location} from '@angular/common';
 
 
@@ -13,6 +13,7 @@ import {Location} from '@angular/common';
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
+  providers: [NgbPaginationConfig]
 })
 export class HomeComponent implements OnInit {
   checks: Array<Checks>;
@@ -20,6 +21,7 @@ export class HomeComponent implements OnInit {
   filter = new FormControl('');
   formUpdat: FormGroup;
   closeAlert: boolean;
+  page = 1;
 
 
   constructor(private checkService: CheckService,

@@ -24,7 +24,10 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let check of checks ; index as i">
+    <tr *ngFor="let check of checks | paginate: { id: 'checks_pagination',
+      itemsPerPage: 4,
+      currentPage: page
+      }">
       <th scope="row">{{check.id}}</th>
       <td>
         <ngb-highlight [result]="check.name" [term]="filter.value"></ngb-highlight>
@@ -80,11 +83,15 @@
     </tbody>
   </table>
   <p>
-    <ngb-alert class="mt-3s" type="warning" *ngIf="!closeAlert">
+    <ngb-alert class="float-right" type="warning" *ngIf="!closeAlert">
       Montant total de vos chèques: <strong>{{sumAmount}} DH</strong>
       <button type="button" class="close" (click)="closeAlert=true">
         <span aria-hidden="true">&times;</span>
       </button>
     </ngb-alert>
   </p>
+</div>
+<div class="mt-5">
+  <pagination-controls  id="checks_pagination" (pageChange)="page = $event" nextLabel="Suivant" previousLabel="Précedent">
+  </pagination-controls>
 </div>
