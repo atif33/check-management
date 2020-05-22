@@ -1,0 +1,28 @@
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+  <a class="navbar-brand btn"  (click)="toggleMenu()">
+  <img src="assets/images/menu-icon.svg" width="70" height="40" class="d-inline-block align-top">
+  </a>
+  <button class="navbar-toggler" type="button">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/cheks">Nouveau chèque</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/contact">Contactez-nous</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/convert">Converter</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/calculator">Calculatrice</a>
+      </li>
+
+    </ul>
+    <button class="btn btn-outline-danger" (click)="logOut()">Déconnexion</button>
+  </div>
+</nav>
+
+<app-footer [@slideInOut]="menuState" (messageEvent)="receiveMessage($event)"></app-footer>

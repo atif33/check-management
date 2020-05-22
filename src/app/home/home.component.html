@@ -1,73 +1,90 @@
-<div class="animate">
-  <div class="animate">
-    <div class="row">
-      <div class="col-sm-12">
-        <div class="card">
-          <div class="card-header card-info card-inverse">
-            <h3 class="card-title">Carousel</h3>
-          </div>
-          <div class="card-block">
-            <ngb-carousel interval="5000">
-
-              <i class="fa fa-chevron-left left carousel-control"></i>
-              <i class="fa fa-chevron-right right carousel-control"></i>
-            </ngb-carousel>
-          </div>
-        </div>
+<div class="container">
+  <form>
+    <div class="row mt-2">
+      <div class="col form-inline">
+        <input class="form-control" type="text" [formControl]="filter"/>
+      </div>
+      <div class="col">
+        <img src="assets/images/add.svg" class="btn btn-outline-danger border-0 float-right"
+             height="60" width="60" (click)="addNewCheck()">
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-4">
-        <div class="card">
-          <img class="img-fluid" src="assets/images/cards.jpg" width="100%" alt="Image">
-          <div class="card-block">
-            <h4 class="card-title">Title</h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="Javascript:void(0);" class="btn btn-primary">Button</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-8">
-        <div class="card">
-          <div class="card-header card-default">
-            <h5 class="card-title">Text alignment
-            </h5>
-          </div>
-          <div class="card-block">
-            <div class="row">
-              <div class="col-md-4 text-xs-left">
-                <div class="card card-default card-block">
-                  <blockquote class="card-blockquote">
-                    <h4 class="text-default">Title</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa et, suscipit non nihil voluptates, maxime ad dignissimos vitae.</p>
-                    <a href="Javascript:void(0);" class="btn btn-primary">Go somewhere</a>
-                  </blockquote>
-                </div>
-              </div>
+  </form>
 
-              <div class="col-md-4 text-xs-center">
-                <div class="card card-default card-block">
-                  <blockquote class="card-blockquote">
-                    <h4 class="text-default">Title</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa et, suscipit non nihil voluptates, maxime ad dignissimos vitae.</p>
-                    <a href="Javascript:void(0);" class="btn btn-primary">Go somewhere</a>
-                  </blockquote>
-                </div>
-              </div>
 
-              <div class="col-md-4 text-xs-right">
-                <div class="card card-default card-block ">
-                  <blockquote class="card-blockquote">
-                    <h4 class="text-default">Title</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa et, suscipit non nihil voluptates, maxime ad dignissimos vitae.</p>
-                    <a href="Javascript:void(0);" class="btn btn-primary">Go somewhere</a>
-                  </blockquote>
-                </div>
-              </div>
-            </div>
-          </div>
+  <table class="table table-striped mt-3">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nom</th>
+      <th scope="col">Montant</th>
+      <th scope="col">Ville</th>
+      <th scope="col">Date</th>
+      <th scope="col">Opération</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let check of checks ; index as i">
+      <th scope="row">{{check.id}}</th>
+      <td>
+        <ngb-highlight [result]="check.name" [term]="filter.value"></ngb-highlight>
+      </td>
+      <td>
+        <ngb-highlight [result]="check.amount | number" [term]="filter.value"></ngb-highlight>
+      </td>
+      <td>
+        <ngb-highlight [result]="check.city " [term]="filter.value"></ngb-highlight>
+      </td>
+      <td>
+        <ngb-highlight [result]="check.effectiveEndDate" [term]="filter.value"></ngb-highlight>
+      </td>
+      <td>
+        <span class="badge badge-success font-size"
+              [ngClass]="check.status === 'Payé' ? 'badge badge-success font-size' : 'badge badge-danger font-size'">
+          {{check.status}}
+        </span>
+      </td>
+      <td>
+        <img src="assets/images/trash-outline.svg" class="btn btn-outline-danger border-0" height="50" width="50"
+             (click)="deleteCheck(check.id)">
+        <img src="assets/images/edit.svg" class="btn btn-outline-danger border-0" height="50" width="50"
+             (click)="open(content)">
+      </td>
+      <ng-template #content let-c="close" let-d="dismiss">
+
+        <div class="modal-header">
+          <h4 class="modal-title" id="modal-basic-title">Chèque N {{check.id}}</h4>
+          <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
-      </div>
-    </div>
-  </div>
+        <form [formGroup]="formUpdat">
+          <div class="form-group">
+            <label>Status</label>
+            <select class="form-control"
+                    formControlName="status">
+              <option class="text-success">Payé</option>
+              <option class="text-danger">Non payé</option>
+            </select>
+          </div>
+        </form>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" (click)="d('Cross click')">Annuler</button>
+          <button type="button" class="btn btn-outline-dark" (click)="updatCheque(check.id)">Modifier</button>
+
+        </div>
+
+      </ng-template>
+
+    </tr>
+    </tbody>
+  </table>
+  <p>
+    <ngb-alert class="mt-3s" type="warning" *ngIf="!closeAlert">
+      Montant total de vos chèques: <strong>{{sumAmount}} DH</strong>
+      <button type="button" class="close" (click)="closeAlert=true">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </ngb-alert>
+  </p>
 </div>

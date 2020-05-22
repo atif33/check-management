@@ -1,1 +1,6 @@
+<app-header *ngIf="!router.url.includes('login')"></app-header>
 <router-outlet></router-outlet>
+<router-outlet name="print"></router-outlet>
+<main [@fadeAnimation]="o.isActivated ? o.activatedRoute : ''">
+  <router-outlet #o="outlet"></router-outlet>
+</main>

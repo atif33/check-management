@@ -1,15 +1,35 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import {LoginComponent} from './login/login.component';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 import {HomeComponent} from './home/home.component';
+import {PdfPrintComponent} from './pdf-print/pdf-print.component';
+import {LoginComponent} from './login/login.component';
+import {CheckComponent} from './check/check.component';
+import {ContactUsComponent} from './contact-us/contact-us.component';
+import {ConvertDeviceComponent} from './convert-device/convert-device.component';
+import {CalculatorComponent} from './calcultor/calculator.component';
 
 
 const routes: Routes = [
-  {path: 'home', component: HomeComponent}
+  // {path: '**', pathMatch: 'full', redirectTo: 'home'},
+  {path: 'login', component: LoginComponent},
+  {path: '', pathMatch: 'full', redirectTo: 'home'},
+  {path: 'home', component: HomeComponent},
+  {path: 'cheks', component: CheckComponent},
+  {path: 'contact', component: ContactUsComponent},
+  {path: 'convert', component: ConvertDeviceComponent},
+  {path: 'calculator', component: CalculatorComponent},
+  {
+    path: 'print',
+    outlet: 'print',
+    children: [
+      {path: 'invoice', component: PdfPrintComponent}
+    ]
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}
