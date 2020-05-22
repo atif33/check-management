@@ -1,11 +1,12 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {AfterContentInit, ChangeDetectorRef, Component, ElementRef, OnChanges, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Checks} from '../_model/Checks';
 import {CheckService} from '../_service/check.service';
 import {NgbActiveModal, NgbAlertConfig, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {ToastrService} from 'ngx-toastr';
 import {User} from '../_model/user';
-import {Router} from '@angular/router';
+import {Router, RouterEvent} from '@angular/router';
+import {Location} from '@angular/common';
 
 
 @Component({
@@ -26,7 +27,8 @@ export class HomeComponent implements OnInit {
               private toasterService: ToastrService,
               private router: Router,
               private modalService: NgbModal,
-              private formBuilder: FormBuilder) {
+              private formBuilder: FormBuilder,
+              private location: Location) {
     alertConfig.type = 'success';
     alertConfig.dismissible = false;
   }
@@ -91,7 +93,7 @@ export class HomeComponent implements OnInit {
     console.log('titit' + newStatus);
     this.checkService.updatCheck(id, newStatus).subscribe();
     this.modalService.dismissAll('Cross click');
-    this.allChecks();
+    window.location.reload();
   }
 
 }
