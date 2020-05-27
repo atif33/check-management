@@ -21,6 +21,7 @@ import {AgmCoreModule} from '@agm/core';
 import {ConvertDeviceComponent} from './convert-device/convert-device.component';
 import { CalculatorComponent } from './calcultor/calculator.component';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { SearchPipe } from './_pipe/search.pipe';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     PdfPrintComponent,
     ContactUsComponent,
     ConvertDeviceComponent,
-    CalculatorComponent
+    CalculatorComponent,
+    SearchPipe
   ],
   imports: [
     BrowserModule,

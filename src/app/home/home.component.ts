@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
   formUpdat: FormGroup;
   closeAlert: boolean;
   page = 1;
-
+  searchText;
 
   constructor(private checkService: CheckService,
               alertConfig: NgbAlertConfig,
@@ -33,6 +33,7 @@ export class HomeComponent implements OnInit {
               private location: Location) {
     alertConfig.type = 'success';
     alertConfig.dismissible = false;
+
   }
 
   ngOnInit(): void {

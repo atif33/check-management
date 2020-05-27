@@ -2,7 +2,7 @@
   <form>
     <div class="row mt-2">
       <div class="col form-inline">
-        <input class="form-control" type="text" [formControl]="filter"/>
+        <input class="form-control" type="text" [(ngModel)]="searchText" name="search"/>
       </div>
       <div class="col">
         <img src="assets/images/add.svg" class="btn btn-outline-danger border-0 float-right"
@@ -27,19 +27,19 @@
     <tr *ngFor="let check of checks | paginate: { id: 'checks_pagination',
       itemsPerPage: 4,
       currentPage: page
-      }">
-      <th scope="row">{{check.id}}</th>
+      } | search: searchText ">
+      <th scope="row">{{check.id }}</th>
       <td>
-        <ngb-highlight [result]="check.name" [term]="filter.value"></ngb-highlight>
+        <ngb-highlight [result]="check.name"></ngb-highlight>
       </td>
       <td>
-        <ngb-highlight [result]="check.amount | number" [term]="filter.value"></ngb-highlight>
+        <ngb-highlight [result]="check.amount | number"></ngb-highlight>
       </td>
       <td>
-        <ngb-highlight [result]="check.city " [term]="filter.value"></ngb-highlight>
+        <ngb-highlight [result]="check.city " ></ngb-highlight>
       </td>
       <td>
-        <ngb-highlight [result]="check.effectiveEndDate" [term]="filter.value"></ngb-highlight>
+        <ngb-highlight [result]="check.effectiveEndDate"></ngb-highlight>
       </td>
       <td>
         <span class="badge badge-success font-size"
@@ -92,6 +92,7 @@
   </p>
 </div>
 <div class="mt-5">
-  <pagination-controls  id="checks_pagination" (pageChange)="page = $event" nextLabel="Suivant" previousLabel="Précedent">
+  <pagination-controls  id="checks_pagination" (pageChange)="page = $event" nextLabel="Suivant"
+                         previousLabel="Précedent" autoHide="false">
   </pagination-controls>
 </div>
