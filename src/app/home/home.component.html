@@ -7,6 +7,8 @@
       <div class="col">
         <img src="assets/images/add.svg" class="btn btn-outline-danger border-0 float-right"
              height="60" width="60" (click)="addNewCheck()">
+        <img src="assets/images/excel.svg" class="btn btn-outline-danger border-0 float-right"
+             height="60" width="60">
       </div>
     </div>
   </form>
@@ -16,8 +18,9 @@
     <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">Nom</th>
-      <th scope="col">Montant</th>
+      <th scope="col" sortable="name">Nom</th>
+      <th scope="col" sortable="amount">Montant</th>
+      <th>N Cheque</th>
       <th scope="col">Ville</th>
       <th scope="col">Date</th>
       <th scope="col">Opération</th>
@@ -36,7 +39,10 @@
         <ngb-highlight [result]="check.amount | number"></ngb-highlight>
       </td>
       <td>
-        <ngb-highlight [result]="check.city " ></ngb-highlight>
+        <ngb-highlight [result]="check.checkNumber"></ngb-highlight>
+      </td>
+      <td>
+        <ngb-highlight [result]="check.city "></ngb-highlight>
       </td>
       <td>
         <ngb-highlight [result]="check.effectiveEndDate"></ngb-highlight>
@@ -92,7 +98,7 @@
   </p>
 </div>
 <div class="mt-5">
-  <pagination-controls  id="checks_pagination" (pageChange)="page = $event" nextLabel="Suivant"
-                         previousLabel="Précedent" autoHide="false">
+  <pagination-controls id="checks_pagination" (pageChange)="page = $event" nextLabel="Suivant"
+                       previousLabel="Précedent" autoHide="false">
   </pagination-controls>
 </div>

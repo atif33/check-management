@@ -33,7 +33,8 @@ export class CheckComponent implements OnInit {
       name: [null, Validators.required],
       city: [null, Validators.required],
       effectiveEndDate: [null, Validators.required],
-      status: [null, Validators.required]
+      status: [null, Validators.required],
+      checkNumber: [null, Validators.required]
     });
 
   }
@@ -53,7 +54,8 @@ export class CheckComponent implements OnInit {
     const date: string = this.transformDate(this.form.controls.effectiveEndDate.value);
     const user: User = JSON.parse(sessionStorage.getItem('user'));
     this.checkManagement = new Checks(null, this.form.controls.amount.value, this.convertNumberToletter(),
-      this.form.controls.name.value, this.form.controls.city.value, date, this.form.controls.status.value, user);
+      this.form.controls.checkNumber.value, this.form.controls.name.value, this.form.controls.city.value, date,
+      this.form.controls.status.value, user);
     localStorage.setItem('checkInfoPrint', JSON.stringify(this.checkManagement));
     this.checkService.createNewCheck(this.checkManagement).subscribe((val: Checks) => {
       this.spinner.show();
@@ -64,7 +66,7 @@ export class CheckComponent implements OnInit {
   }
 
   activeCalculator(): void {
-      this.showCalculator = this.showCalculator !== true;
+    this.showCalculator = this.showCalculator !== true;
   }
 
   resetForm(): void {

@@ -18,7 +18,6 @@ import {Location} from '@angular/common';
 export class HomeComponent implements OnInit {
   checks: Array<Checks>;
   sumAmount: number;
-  filter = new FormControl('');
   formUpdat: FormGroup;
   closeAlert: boolean;
   page = 1;
