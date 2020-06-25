@@ -3,7 +3,7 @@
     <div class="form-row">
       <div class="form-group col-md-5">
         <label for="inputState">Banque</label>
-        <select id="inputState" class="form-control">
+        <select id="inputState" class="form-control" formControlName="bank">
           <option selected *ngFor="let check of checks">{{check}}</option>
         </select>
       </div>

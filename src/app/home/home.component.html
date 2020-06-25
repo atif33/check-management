@@ -18,8 +18,9 @@
     <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col" sortable="name">Nom</th>
-      <th scope="col" sortable="amount">Montant</th>
+      <th scope="col" class="w-5">Banque</th>
+      <th scope="col" >Nom</th>
+      <th scope="col">Montant</th>
       <th>N Cheque</th>
       <th scope="col">Ville</th>
       <th scope="col">Date</th>
@@ -31,15 +32,16 @@
       itemsPerPage: 4,
       currentPage: page
       } | search: searchText ">
-      <th scope="row">{{check.id }}</th>
+      <td>{{check.id }}</td>
+      <td> {{check.bank}}</td>
       <td>
-        <ngb-highlight [result]="check.name"></ngb-highlight>
+      {{check.name}}
       </td>
       <td>
-        <ngb-highlight [result]="check.amount | number"></ngb-highlight>
+        <ngb-highlight [result]="check.amount"></ngb-highlight>
       </td>
       <td>
-        <ngb-highlight [result]="check.checkNumber"></ngb-highlight>
+        <ngb-highlight [result]="check.checkNumber | number"></ngb-highlight>
       </td>
       <td>
         <ngb-highlight [result]="check.city "></ngb-highlight>

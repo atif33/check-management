@@ -13,7 +13,7 @@ import {ToastrService} from 'ngx-toastr';
   styleUrls: ['./check.component.scss']
 })
 export class CheckComponent implements OnInit {
-  checks = ['Banque Populaire', 'Credit Agricole', 'LCL'];
+  checks = ['Banque Populaire', 'Credit Agricole', 'LCL', ''];
   form: FormGroup;
   checkManagement: Checks;
   message;
@@ -34,7 +34,8 @@ export class CheckComponent implements OnInit {
       city: [null, Validators.required],
       effectiveEndDate: [null, Validators.required],
       status: [null, Validators.required],
-      checkNumber: [null, Validators.required]
+      checkNumber: [null, Validators.required],
+      bank: [null, Validators.required]
     });
 
   }
@@ -54,7 +55,8 @@ export class CheckComponent implements OnInit {
     const date: string = this.transformDate(this.form.controls.effectiveEndDate.value);
     const user: User = JSON.parse(sessionStorage.getItem('user'));
     this.checkManagement = new Checks(null, this.form.controls.amount.value, this.convertNumberToletter(),
-      this.form.controls.checkNumber.value, this.form.controls.name.value, this.form.controls.city.value, date,
+      this.form.controls.checkNumber.value, this.form.controls.bank.value, this.form.controls.name.value,
+      this.form.controls.city.value, date,
       this.form.controls.status.value, user);
     localStorage.setItem('checkInfoPrint', JSON.stringify(this.checkManagement));
     this.checkService.createNewCheck(this.checkManagement).subscribe((val: Checks) => {
