@@ -41,7 +41,13 @@
         <ngb-highlight [result]="check.amount"></ngb-highlight>
       </td>
       <td>
-        <ngb-highlight [result]="check.checkNumber | number"></ngb-highlight>
+        <!--<ngb-highlight [result]="check.checkNumber"></ngb-highlight>-->
+        <ng-container *ngIf="check.checkNumber !== null; else noCheckNumber">
+          {{check.checkNumber}}
+        </ng-container>
+        <ng-template #noCheckNumber>
+          <img src="assets/images/add-check-number.svg" class="btn btn-outline-danger border-0">
+        </ng-template>
       </td>
       <td>
         <ngb-highlight [result]="check.city "></ngb-highlight>
