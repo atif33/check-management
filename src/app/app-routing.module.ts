@@ -7,6 +7,7 @@ import {CheckComponent} from './check/check.component';
 import {ContactUsComponent} from './contact-us/contact-us.component';
 import {ConvertDeviceComponent} from './convert-device/convert-device.component';
 import {CalculatorComponent} from './calcultor/calculator.component';
+import {DashboadComponent} from './dashboad/dashboad.component';
 
 
 const routes: Routes = [
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path: 'contact', component: ContactUsComponent},
   {path: 'convert', component: ConvertDeviceComponent},
   {path: 'calculator', component: CalculatorComponent},
+  {path: 'dashboard', component: DashboadComponent},
   {
     path: 'print',
     outlet: 'print',

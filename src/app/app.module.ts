@@ -22,6 +22,8 @@ import {ConvertDeviceComponent} from './convert-device/convert-device.component'
 import { CalculatorComponent } from './calcultor/calculator.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { SearchPipe } from './_pipe/search.pipe';
+import { DashboadComponent } from './dashboad/dashboad.component';
+import {ChartsModule} from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,8 @@ import { SearchPipe } from './_pipe/search.pipe';
     ContactUsComponent,
     ConvertDeviceComponent,
     CalculatorComponent,
-    SearchPipe
+    SearchPipe,
+    DashboadComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +56,8 @@ import { SearchPipe } from './_pipe/search.pipe';
       // https://developers.google.com/maps/documentation/javascript/get-api-key?hl=en
       apiKey: ''
     }),
-    NgxPaginationModule
+    NgxPaginationModule,
+    ChartsModule
 
 
   ],
