@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewChecked, AfterViewInit, Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {slideInOut} from '../_animations/animation-slideInOut';
 
@@ -16,6 +16,7 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log('load');
   }
 
   logOut(): void {

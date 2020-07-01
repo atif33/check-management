@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {CheckService} from '../_service/check.service';
 import {User} from '../_model/user';
-import {map, reduce, tap} from 'rxjs/operators';
+import {map} from 'rxjs/operators';
 import {Checks} from '../_model/Checks';
 
 @Component({
@@ -39,6 +39,4 @@ export class DashboadComponent implements OnInit {
   amountCHeckPaidAndNotPaid(): Array<number> {
     return this.pieChartData = [this.paid, this.noPaid];
   }
-
-
 }

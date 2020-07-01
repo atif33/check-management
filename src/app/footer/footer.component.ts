@@ -8,6 +8,8 @@ import {Component, ElementRef, EventEmitter, HostListener, OnInit, Output} from 
 export class FooterComponent implements OnInit {
   @Output() messageEvent = new EventEmitter<string>();
 
+  // TODO Close component when click outside
+
   constructor() {
   }
 
@@ -16,6 +18,7 @@ export class FooterComponent implements OnInit {
 
 
   sendMessage() {
+    console.log('111111111');
     this.messageEvent.emit('out');
   }
 

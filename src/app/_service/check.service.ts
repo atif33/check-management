@@ -4,6 +4,7 @@ import {Checks} from '../_model/Checks';
 import {environment} from '../../environments/environment';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
+import {User} from '../_model/user';
 
 @Injectable({
   providedIn: 'root'
@@ -55,5 +56,15 @@ export class CheckService {
     });
 
     return this.http.get<number>(environment.api_url + '/api/check/amountCheckPaid', {headers: header});
+  }
+
+  addCheckNumber(checkNumber) {
+    const header = new HttpHeaders({
+      Authorization: sessionStorage.getItem('token'),
+      'Content-Type': 'application/json'
+    });
+    const userId: User = JSON.parse(sessionStorage.getItem('user')).id;
+    return this.http.post(environment.api_url + '/api/check/addCheckNumber?id=' + userId + '&checkNumber=' + checkNumber,
+      {}, {headers: header});
   }
 }

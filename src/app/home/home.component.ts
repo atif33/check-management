@@ -98,4 +98,7 @@ export class HomeComponent implements OnInit {
     window.location.reload();
   }
 
+  addNewCheckNumber(checkNumber: number) {
+    this.checkService.addCheckNumber(checkNumber).subscribe();
+  }
 }

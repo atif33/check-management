@@ -19,7 +19,7 @@
     <tr>
       <th scope="col">#</th>
       <th scope="col" class="w-5">Banque</th>
-      <th scope="col" >Nom</th>
+      <th scope="col">Nom</th>
       <th scope="col">Montant</th>
       <th>N Cheque</th>
       <th scope="col">Ville</th>
@@ -35,14 +35,14 @@
       <td>{{check.id }}</td>
       <td> {{check.bank}}</td>
       <td>
-      {{check.name}}
+        {{check.name}}
       </td>
       <td>
         <ngb-highlight [result]="check.amount"></ngb-highlight>
       </td>
-      <td>
+      <td (click)="addNewCheckNumber(check.id)">
         <!--<ngb-highlight [result]="check.checkNumber"></ngb-highlight>-->
-        <ng-container *ngIf="check.checkNumber !== null; else noCheckNumber">
+        <ng-container *ngIf="check.checkNumber !== null; else noCheckNumber" >
           {{check.checkNumber}}
         </ng-container>
         <ng-template #noCheckNumber>
